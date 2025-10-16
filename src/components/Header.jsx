@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { FaSearch } from 'react-icons/fa';
 
-function Header({onAboutClick}) {
+function Header({onAboutClick, query, setQuery, getPopularShows}) {
 
     const [menuOpen, setMenuOpen] = useState(false);
 
@@ -23,14 +23,20 @@ function Header({onAboutClick}) {
         </div>
 
 
-      <div className='relative flex items-center gap-3'>
-          <input
-            type='text'
-            placeholder='Search...'
-            className='bg-gray-500 text-white rounded-full px-4 py-2 w-40 sm:w-56 md:w-64 lg:w-80 opacity-30 hover:opacity-150 focus:opacity-150 focus:outline-none transition-all duration-300'
-          />
-        <FaSearch className="absolute right-3 text-white opacity-70 hover:opacity-100 cursor-pointer" />
-    </div>
+      <form 
+      onSubmit={getPopularShows} 
+      className='relative flex items-center'>
+        <input
+          type='text'
+          placeholder='Search...'
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          className='bg-gray-500 text-white rounded-full pl-4 pr-10 py-2 w-40 sm:w-56 md:w-64 lg:w-80 focus:outline-none transition-all duration-300'
+        />
+        <button type="submit" className="absolute right-3">
+          <FaSearch className="text-white opacity-70 hover:opacity-100 cursor-pointer" />
+        </button>
+      </form>
 
     <ul className='hidden md:flex gap-6 text-white font-medium'>
           <li className='hover:text-red-600 cursor-pointer'>Home</li>
