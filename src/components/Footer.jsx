@@ -1,7 +1,7 @@
 import spidermanImg from '../assets/spiderman.jpg';
 import { FaCrown, FaBolt, FaPlay, FaClosedCaptioning } from 'react-icons/fa';
 
-function Footer() {
+function Footer({ onHomeClick }) {
   return (
     <div className='relative h-[700px] sm:h-[550px] overflow-hidden'>
       <img 
@@ -28,7 +28,6 @@ function Footer() {
             <span>High quality</span>
           </div>
 
-          {/* Free forever */}
           <div className='flex items-center gap-2'>
             <div className='border-1 border-red-600 rounded-md p-2'>
               <FaPlay className='text-red-600 text-xl' />
@@ -36,7 +35,6 @@ function Footer() {
             <span>Free forever</span>
           </div>
 
-          {/* Fast load */}
           <div className='flex items-center gap-2'>
             <div className='border-1 border-red-600 rounded-md p-2'>
               <FaBolt className='text-red-600 text-xl' />
@@ -44,7 +42,6 @@ function Footer() {
             <span>Fast load</span>
           </div>
 
-          {/* Multi subtitles */}
           <div className='flex items-center gap-2'>
             <div className='border-1 border-red-600 rounded-md p-2'>
               <FaClosedCaptioning className='text-red-600 text-xl' />
@@ -55,11 +52,13 @@ function Footer() {
       </div>
       <div className='absolute bottom-0 left-0 right-0 p-4 bg-black bg-opacity-30'>
         <ul className='flex justify-center items-center gap-6 text-gray-300 text-sm'>
-          <li className='hover:text-white cursor-pointer'>Home</li>
-          <li className='hover:text-white cursor-pointer'>Movies</li>
-          <li className='hover:text-white cursor-pointer'>TV Series</li>
-          <li className='hover:text-white cursor-pointer'>Contact</li>
-          <li className='hover:text-white cursor-pointer'>Terms of Service</li>
+          <li className='hover:text-red-600 cursor-pointer'
+          onClick={onHomeClick}
+          >Home</li>
+          <li className='hover:text-red-600 cursor-pointer'>Movies</li>
+          <li className='hover:text-red-600 cursor-pointer'>TV Series</li>
+          <li className='hover:text-red-600 cursor-pointer'>Contact</li>
+          <li className='hover:text-red-600 cursor-pointer'>Terms of Service</li>
         </ul>
       </div>
     </div>

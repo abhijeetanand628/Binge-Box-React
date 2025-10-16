@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { FaSearch } from 'react-icons/fa';
 
-function Header() {
+function Header({onAboutClick}) {
 
     const [menuOpen, setMenuOpen] = useState(false);
 
@@ -33,9 +33,12 @@ function Header() {
     </div>
 
     <ul className='hidden md:flex gap-6 text-white font-medium'>
-          <li className='hover:text-red-500 cursor-pointer'>Home</li>
-          <li className='hover:text-red-500 cursor-pointer'>Movies</li>
-          <li className='hover:text-red-500 cursor-pointer'>TV Series</li>
+          <li className='hover:text-red-600 cursor-pointer'>Home</li>
+          <li className='hover:text-red-600 cursor-pointer'>Movies</li>
+          <li className='hover:text-red-600 cursor-pointer'>TV Series</li>
+          <li className='hover:text-red-600 cursor-pointer'
+          onClick={onAboutClick}
+          >About Us</li>
     </ul>
 
     {menuOpen && (
@@ -44,6 +47,10 @@ function Header() {
               <li className='px-4 py-2 hover:bg-gray-700 rounded-md cursor-pointer'>Home</li>
               <li className='px-4 py-2 hover:bg-gray-700 rounded-md cursor-pointer'>Movies</li>
               <li className='px-4 py-2 hover:bg-gray-700 rounded-md cursor-pointer'>TV Series</li>
+              <li className='px-4 py-2 hover:bg-gray-700 rounded-md cursor-pointer'
+              onClick={onAboutClick}
+              >About Us</li>
+
             </ul>
           </div>
     )}
