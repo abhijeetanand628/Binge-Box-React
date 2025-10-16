@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { FaSearch } from 'react-icons/fa';
 
 function Header() {
@@ -17,8 +17,8 @@ function Header() {
           </button>
 
 
-        <button className='text-2xl font-semibold text-red-600 cursor-pointer flex items-center gap-1'>
-            🎬 <span className='text-white font-semibold'>Binge</span>Box
+        <button className='text-2xl font-semibold text-red-600 cursor-pointer flex items-center'>
+            🎬 Binge<span className='text-white font-semibold'>Box</span>
           </button>
         </div>
 
@@ -27,7 +27,7 @@ function Header() {
           <input
             type='text'
             placeholder='Search...'
-            className='bg-gray-500 text-white rounded-full px-4 py-2 w-40 sm:w-56 md:w-64 lg:w-80 opacity-30 hover:opacity-100 focus:opacity-100 focus:outline-none transition-all duration-300'
+            className='bg-gray-500 text-white rounded-full px-4 py-2 w-40 sm:w-56 md:w-64 lg:w-80 opacity-30 hover:opacity-150 focus:opacity-150 focus:outline-none transition-all duration-300'
           />
         <FaSearch className="absolute right-3 text-white opacity-70 hover:opacity-100 cursor-pointer" />
     </div>
