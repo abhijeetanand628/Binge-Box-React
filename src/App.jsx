@@ -1,5 +1,5 @@
 import './App.css';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Poster from './components/Poster';
@@ -32,6 +32,11 @@ function App() {
   const scrollToAbout = () => {
     aboutRef.current?.scrollIntoView({ behavior: 'smooth' })
   };
+
+  useEffect(() => {
+    getPopularShows('Thor');
+    window.scrollTo(0, 0)
+  }, [])
 
   return (
     <>
