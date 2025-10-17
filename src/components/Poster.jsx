@@ -9,7 +9,7 @@ function Poster({movie}) {
   return (
     <div
     key={imdbID}
-    className="bg-[#1e1e1e] rounded-xl shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden cursor-pointer flex flex-col w-[180px]"
+    className="bg-[#1e1e1e] rounded-xl shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden cursor-pointer flex flex-col w-[180px] hover:scale-105"
     >
       <div className="relative w-full h-[270px]">
         <img

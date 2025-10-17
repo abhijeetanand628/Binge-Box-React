@@ -6,11 +6,17 @@ function Header({onAboutClick, getPopularShows}) {
     const [menuOpen, setMenuOpen] = useState(false);
     const [search, setSearch] = useState('');
 
+    const handleSearch = () => {
+      if(search.trim()) {
+        getPopularShows(search);
+        setSearch('');
+      }
+    };
+  
     const enter = (e) => {
       if(e.key === 'Enter')
       {
-        getPopularShows(search);
-        setSearch('');
+        handleSearch()
       }
     }
 
@@ -41,7 +47,9 @@ function Header({onAboutClick, getPopularShows}) {
             onKeyDown={enter}
             className='bg-gray-500 text-white rounded-full px-4 py-2 w-40 sm:w-56 md:w-64 lg:w-80 opacity-30 hover:opacity-150 focus:opacity-150 focus:outline-none transition-all duration-300'
           />
-        <FaSearch className="absolute right-3 text-white opacity-70 hover:opacity-100 cursor-pointer" />
+        <FaSearch className="absolute right-3 text-white opacity-70 hover:opacity-100 cursor-pointer" 
+          onClick={handleSearch}
+        />
     </div>
 
     <ul className='hidden md:flex gap-6 text-white font-medium'>
