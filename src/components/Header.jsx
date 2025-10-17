@@ -15,7 +15,7 @@ function Header({onAboutClick, getPopularShows}) {
     }
 
   return (
-    <div className='bg-black w-full min-h-screen flex flex-col'>
+    <div className='bg-black w-full h-auto flex flex-col'>
       <div className='bg-[#121212] w-full p-3 flex items-center justify-between relative'>
         <div className='flex items-center gap-3'>
           <button
