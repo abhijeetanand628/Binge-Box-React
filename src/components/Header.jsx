@@ -1,15 +1,18 @@
 import { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa';
 
 function Header({onAboutClick, getPopularShows}) {
 
     const [menuOpen, setMenuOpen] = useState(false);
     const [search, setSearch] = useState('');
+    const navigate = useNavigate();
 
     const handleSearch = () => {
       if(search.trim()) {
         getPopularShows(search);
         setSearch('');
+        navigate('/');
       }
     };
   
@@ -19,6 +22,11 @@ function Header({onAboutClick, getPopularShows}) {
         handleSearch()
       }
     }
+
+    // const homeBtn = () => {
+    //   getPopularShows('Thor');
+    //   window.scrollTo(0, 0);
+    // }
 
   return (
     <div className='bg-black w-full h-auto flex flex-col'>
@@ -32,9 +40,12 @@ function Header({onAboutClick, getPopularShows}) {
           </button>
 
 
-        <button className='text-2xl font-semibold text-red-600 cursor-pointer flex items-center'>
-            🎬 Binge<span className='text-white font-semibold'>Box</span>
-          </button>
+        <Link to="/" 
+          className='text-2xl font-semibold text-red-600 cursor-pointer flex items-center'
+          // onClick={homeBtn}
+        >
+          🎬 Binge<span className='text-white font-semibold'>Box</span>
+          </Link>
         </div>
 
 
@@ -53,9 +64,9 @@ function Header({onAboutClick, getPopularShows}) {
     </div>
 
     <ul className='hidden md:flex gap-6 text-white font-medium'>
-          <li className='hover:text-red-500 cursor-pointer'>Home</li>
-          <li className='hover:text-red-500 cursor-pointer'>Movies</li>
-          <li className='hover:text-red-500 cursor-pointer'>TV Series</li>
+          <li><Link to="/" className='hover:text-red-600 cursor-pointer'>Home</Link></li>
+          <li><Link to="/movies" className='hover:text-red-600 cursor-pointer'>Movies</Link></li>
+          <li><Link to="/series" className='hover:text-red-600 cursor-pointer'>TV Series</Link></li>
           <li className='hover:text-red-600 cursor-pointer'
           onClick={onAboutClick}
           >About Us</li>
@@ -64,9 +75,9 @@ function Header({onAboutClick, getPopularShows}) {
     {menuOpen && (
           <div className='absolute top-16 left-3 bg-[#1e1e1e] text-white rounded-lg shadow-lg w-44 p-2 flex flex-col md:hidden transition-all duration-300 ease-in-out'>
             <ul>
-              <li className='px-4 py-2 hover:bg-gray-700 rounded-md cursor-pointer'>Home</li>
-              <li className='px-4 py-2 hover:bg-gray-700 rounded-md cursor-pointer'>Movies</li>
-              <li className='px-4 py-2 hover:bg-gray-700 rounded-md cursor-pointer'>TV Series</li>
+              <li><Link to="/" className='block px-4 py-2 hover:bg-gray-700 rounded-md cursor-pointer'>Home</Link></li>
+              <li><Link to="/movies" className='block px-4 py-2 hover:bg-gray-700 rounded-md cursor-pointer'>Movies</Link></li>
+              <li><Link to="/series" className='block px-4 py-2 hover:bg-gray-700 rounded-md cursor-pointer'>TV Series</Link></li>
               <li className='px-4 py-2 hover:bg-gray-700 rounded-md cursor-pointer'
               onClick={onAboutClick}
               >About Us</li>

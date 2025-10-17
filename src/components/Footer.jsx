@@ -1,5 +1,6 @@
 import spidermanImg from '../assets/spiderman.jpg';
 import { FaCrown, FaBolt, FaPlay, FaClosedCaptioning } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 function Footer({ onHomeClick }) {
   return (
@@ -52,12 +53,13 @@ function Footer({ onHomeClick }) {
       </div>
       <div className='absolute bottom-0 left-0 right-0 p-4 bg-black bg-opacity-30'>
         <ul className='flex justify-center items-center gap-6 text-gray-300 text-sm'>
-          <li className='hover:text-red-600 cursor-pointer'
+          <li><Link to="/" className='hover:text-red-600 cursor-pointer'
           onClick={onHomeClick}
-          >Home</li>
-          <li className='hover:text-red-600 cursor-pointer'>Movies</li>
-          <li className='hover:text-red-600 cursor-pointer'>TV Series</li>
-          <li className='hover:text-red-600 cursor-pointer'>Contact</li>
+          >Home</Link>
+          </li>
+          <li><Link to="/movies" className='hover:text-red-600 cursor-pointer'>Movies</Link></li>
+          <li><Link to="/series" className='hover:text-red-600 cursor-pointer'>TV Series</Link></li>
+          <li><Link to="/contact" className='hover:text-red-600 cursor-pointer'>Contact</Link></li>
           <li className='hover:text-red-600 cursor-pointer'>Terms of Service</li>
         </ul>
       </div>
