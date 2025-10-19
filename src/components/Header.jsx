@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa';
 
 function Header({onAboutClick, getPopularShows}) {
@@ -21,6 +21,12 @@ function Header({onAboutClick, getPopularShows}) {
       {
         handleSearch()
       }
+    }
+
+    const getNavLinkClass = ({ isActive }) => {
+      return isActive
+      ? 'text-red-600 cursor-pointer font-semibold underline underline-offset-6 decoration-2'
+      : 'hover:text-red-600 cursor-pointer';
     }
 
     // const homeBtn = () => {
@@ -64,9 +70,9 @@ function Header({onAboutClick, getPopularShows}) {
     </div>
 
     <ul className='hidden md:flex gap-6 text-white font-medium'>
-          <li><Link to="/" className='hover:text-red-600 cursor-pointer'>Home</Link></li>
-          <li><Link to="/movies" className='hover:text-red-600 cursor-pointer'>Movies</Link></li>
-          <li><Link to="/series" className='hover:text-red-600 cursor-pointer'>TV Series</Link></li>
+          <li><NavLink to="/" className={getNavLinkClass}>Home</NavLink></li>
+          <li><NavLink to="/movies" className={getNavLinkClass}>Movies</NavLink></li>
+          <li><NavLink to="/series" className={getNavLinkClass}>TV Series</NavLink></li>
           <li className='hover:text-red-600 cursor-pointer'
           onClick={onAboutClick}
           >About Us</li>
@@ -75,9 +81,9 @@ function Header({onAboutClick, getPopularShows}) {
     {menuOpen && (
           <div className='absolute top-16 left-3 bg-[#1e1e1e] text-white rounded-lg shadow-lg w-44 p-2 flex flex-col md:hidden transition-all duration-300 ease-in-out'>
             <ul>
-              <li><Link to="/" className='block px-4 py-2 hover:bg-gray-700 rounded-md cursor-pointer'>Home</Link></li>
-              <li><Link to="/movies" className='block px-4 py-2 hover:bg-gray-700 rounded-md cursor-pointer'>Movies</Link></li>
-              <li><Link to="/series" className='block px-4 py-2 hover:bg-gray-700 rounded-md cursor-pointer'>TV Series</Link></li>
+              <li><NavLink to="/" className='block px-4 py-2 hover:bg-gray-700 rounded-md cursor-pointer'>Home</NavLink></li>
+              <li><NavLink to="/movies" className='block px-4 py-2 hover:bg-gray-700 rounded-md cursor-pointer'>Movies</NavLink></li>
+              <li><NavLink to="/series" className='block px-4 py-2 hover:bg-gray-700 rounded-md cursor-pointer'>TV Series</NavLink></li>
               <li className='px-4 py-2 hover:bg-gray-700 rounded-md cursor-pointer'
               onClick={onAboutClick}
               >About Us</li>

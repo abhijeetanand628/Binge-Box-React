@@ -1,8 +1,15 @@
 import spidermanImg from '../assets/spiderman.jpg';
 import { FaCrown, FaBolt, FaPlay, FaClosedCaptioning } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 function Footer({ onHomeClick, onMoviesClick, onTVSeriesClick, onContactUsClick }) {
+
+  const getNavLinkClass = ({ isActive }) => {
+      return isActive
+      ? 'text-red-600 cursor-pointer font-semibold underline underline-offset-6 decoration-2'
+      : 'hover:text-red-600 cursor-pointer';
+    }
+
   return (
     <div className='relative h-[700px] sm:h-[550px] overflow-hidden'>
       <img 
@@ -53,21 +60,21 @@ function Footer({ onHomeClick, onMoviesClick, onTVSeriesClick, onContactUsClick 
       </div>
       <div className='absolute bottom-0 left-0 right-0 p-4 bg-black bg-opacity-30'>
         <ul className='flex justify-center items-center gap-6 text-gray-300 text-sm'>
-          <li><Link to="/" className='hover:text-red-600 cursor-pointer'
+          <li><NavLink to="/" className={getNavLinkClass}
           onClick={onHomeClick}
-          >Home</Link>
+          >Home</NavLink>
           </li>
-          <li><Link to="/movies" className='hover:text-red-600 cursor-pointer'
+          <li><NavLink to="/movies" className={getNavLinkClass}
           onClick={onMoviesClick}
-          >Movies</Link>
+          >Movies</NavLink>
           </li>
-          <li><Link to="/series" className='hover:text-red-600 cursor-pointer'
+          <li><NavLink to="/series" className={getNavLinkClass}
           onClick={onTVSeriesClick}
-          >TV Series</Link>
+          >TV Series</NavLink>
           </li>
-          <li><Link to="/contactus" className='hover:text-red-600 cursor-pointer'
+          <li><NavLink to="/contactus" className={getNavLinkClass}
           onClick={onContactUsClick}
-          >Contact Us</Link></li>
+          >Contact Us</NavLink></li>
           <li className='hover:text-red-600 cursor-pointer'>Terms of Service</li>
         </ul>
       </div>
