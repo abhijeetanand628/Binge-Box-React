@@ -1,5 +1,5 @@
 import './App.css';
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, use } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -51,6 +51,7 @@ function App() {
     aboutRef.current?.scrollIntoView({ behavior: 'smooth' })
   };
 
+
   return (
     <>
     <div ref={homeRef}>
@@ -70,7 +71,12 @@ function App() {
     </main>
     
     <div ref={aboutRef}>
-      <Footer onHomeClick={scrollToHome} />
+      <Footer 
+      onHomeClick={scrollToHome} 
+      onMoviesClick={scrollToHome}
+      onTVSeriesClick={scrollToHome}
+      onContactClick={scrollToHome}
+      />
     </div>
     </>
   )
