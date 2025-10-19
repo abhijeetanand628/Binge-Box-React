@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-function Contact() {
+function ContactUs() {
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -73,4 +73,4 @@ function Contact() {
   );
 }
 
-export default Contact;
+export default ContactUs;

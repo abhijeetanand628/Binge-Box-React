@@ -2,7 +2,7 @@ import spidermanImg from '../assets/spiderman.jpg';
 import { FaCrown, FaBolt, FaPlay, FaClosedCaptioning } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
-function Footer({ onHomeClick, onMoviesClick, onTVSeriesClick, onContactClick }) {
+function Footer({ onHomeClick, onMoviesClick, onTVSeriesClick, onContactUsClick }) {
   return (
     <div className='relative h-[700px] sm:h-[550px] overflow-hidden'>
       <img 
@@ -65,9 +65,9 @@ function Footer({ onHomeClick, onMoviesClick, onTVSeriesClick, onContactClick })
           onClick={onTVSeriesClick}
           >TV Series</Link>
           </li>
-          <li><Link to="/contact" className='hover:text-red-600 cursor-pointer'
-          onClick={onContactClick}
-          >Contact</Link></li>
+          <li><Link to="/contactus" className='hover:text-red-600 cursor-pointer'
+          onClick={onContactUsClick}
+          >Contact Us</Link></li>
           <li className='hover:text-red-600 cursor-pointer'>Terms of Service</li>
         </ul>
       </div>

@@ -6,7 +6,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Movies from './pages/Movies';
 import Series from './pages/Series';
-import Contact from './pages/Contact';
+import ContactUs from './pages/ContactUs';
 
 function App() {
 
@@ -66,7 +66,7 @@ function App() {
         <Route path="/" element={<Home results={results} loading={loading} />} />
         <Route path="/movies" element={<Movies />} />
         <Route path='/series' element={<Series />}/>
-        <Route path="/contact" element={<Contact />}/>
+        <Route path="/contactus" element={<ContactUs />}/>
       </Routes>
     </main>
     
@@ -75,7 +75,7 @@ function App() {
       onHomeClick={scrollToHome} 
       onMoviesClick={scrollToHome}
       onTVSeriesClick={scrollToHome}
-      onContactClick={scrollToHome}
+      onContactUsClick={scrollToHome}
       />
     </div>
     </>
