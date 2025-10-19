@@ -32,7 +32,10 @@ function Series() {
   return (
     <div className="w-full flex justify-center bg-black min-h-[60vh]">
       <div className="w-full max-w-[1400px] px-4 sm:px-6 md:px-10 py-6 sm:py-10">
-        <h1 className="text-white text-3xl font-bold mb-6 text-center">TV Series</h1>
+        <h1 className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 text-center tracking-wide">
+          TV Series
+        </h1>
+
         {loading ? (
           <div className="text-white text-lg sm:text-xl font-semibold mt-20 text-center">Loading...</div>
         ) : results.length > 0 ? (
