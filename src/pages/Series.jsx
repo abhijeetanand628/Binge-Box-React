@@ -11,7 +11,7 @@ function Series() {
   const getSeries = async() => {
     setLoading(true);
     try {
-      const url = `http://www.omdbapi.com/?s=comedy&type=series&apikey=${apiKey}`;
+      const url = `https://www.omdbapi.com/?s=comedy&type=series&apikey=${apiKey}`;
       const response = await fetch(url);
       const data = await response.json();
       console.log(data.Search);

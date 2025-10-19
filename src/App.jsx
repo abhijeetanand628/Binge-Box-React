@@ -22,7 +22,7 @@ function App() {
   setLoading(true);
 
   try {
-      const url = `http://www.omdbapi.com/?s=${search}&apikey=${apiKey}`;
+      const url = `https://www.omdbapi.com/?s=${search}&apikey=${apiKey}`;
       const response = await fetch(url);
       const data = await response.json();
       console.log(data.Search);

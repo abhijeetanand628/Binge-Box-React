@@ -11,7 +11,7 @@ function Movies() {
   const getMovies = async() => {
     setLoading(true);
     try {
-      const url = `http://www.omdbapi.com/?s=action&type=movie&apikey=${apiKey}`;
+      const url = `https://www.omdbapi.com/?s=action&type=movie&apikey=${apiKey}`;
       const response = await fetch(url);
       const data = await response.json();
       console.log(data.Search);
