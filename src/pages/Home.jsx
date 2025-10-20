@@ -1,7 +1,19 @@
 import Poster from '../components/Poster';
+import MovieSlider from '../components/MovieSlider';
 
 function Home({ results, loading }) {
   return (
+    <div className="w-full bg-black min-h-screen flex flex-col items-center text-white">
+      
+      {/* 🎥 Hero / Movie Slider */}
+      <div className="w-full">
+        {/* Show slider only if there are results */}
+        {!loading && results.length > 0 && (
+          <MovieSlider movies={results.slice(0, 6)} />  
+          // 👉 showing only first 6 for the slider
+        )}
+      </div>
+
     <div className="w-full flex justify-center bg-black min-h-[60vh]">
       {loading ? (
         <div className="text-white text-lg sm:text-xl font-semibold mt-40">Loading...</div>
@@ -17,6 +29,7 @@ function Home({ results, loading }) {
           No results found.
         </div>
       )}
+    </div>
     </div>
   )
 }
