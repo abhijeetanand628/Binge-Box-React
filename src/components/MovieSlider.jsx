@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { useSwipeable } from "react-swipeable";
 
 function MovieSlider({ movies = [] }) {
   const [current, setCurrent] = useState(0);
 
-  // Auto slide every 5 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev === movies.length - 1 ? 0 : prev + 1));
@@ -12,7 +12,6 @@ function MovieSlider({ movies = [] }) {
     return () => clearInterval(interval);
   }, [movies]);
 
-  // Manual navigation
   const handleNext = () => {
     setCurrent((prev) => (prev === movies.length - 1 ? 0 : prev + 1));
   };
@@ -20,6 +19,13 @@ function MovieSlider({ movies = [] }) {
   const handlePrev = () => {
     setCurrent((prev) => (prev === 0 ? movies.length - 1 : prev - 1));
   };
+
+  const handlers = useSwipeable({
+    onSwipedLeft: () => handleNext(),
+    onSwipedRight: () => handlePrev(),
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: true
+  });
 
   if (movies.length === 0)
     return (
@@ -29,15 +35,20 @@ function MovieSlider({ movies = [] }) {
     );
 
   const currentMovie = movies[current];
+
+  const highResPoster = currentMovie?.Poster?.replace('_V1_SX300.jpg', '_V1_SX1000.jpg');
+
   const bgImage =
     currentMovie?.Poster !== "N/A"
-      ? currentMovie.Poster
+      ? highResPoster
       : "https://via.placeholder.com/800x400?text=No+Image";
 
   return (
-    <div className="relative w-full h-[60vh] sm:h-[70vh] md:h-[85vh] lg:h-[90vh] overflow-hidden rounded-xl shadow-2xl">
+    <div 
+      {...handlers} 
+      className="relative w-full h-[60vh] sm:h-[70vh] md:h-[85vh] lg:h-[90vh] overflow-hidden rounded-xl shadow-2xl"
+    >
 
-      {/* 🎞 Background image with fade */}
       <div
         key={current}
         className="absolute inset-0 transition-opacity duration-700 ease-in-out opacity-100"
@@ -49,10 +60,8 @@ function MovieSlider({ movies = [] }) {
         }}
       />
 
-      {/* Overlay gradient */}
       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
 
-      {/* Movie info */}
       <div className="absolute bottom-6 sm:bottom-10 left-4 sm:left-8 md:left-16 text-white max-w-xs sm:max-w-md md:max-w-2xl px-2 sm:px-0">
         <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold drop-shadow-lg mb-3">
           {currentMovie?.Title || "Untitled"}
@@ -62,32 +71,26 @@ function MovieSlider({ movies = [] }) {
         </p>
 
         <div className="flex flex-wrap gap-3">
-          <button className="bg-red-600 hover:bg-red-700 px-4 py-2 sm:px-6 sm:py-3 rounded-full text-sm sm:text-base font-semibold transition-all">
+          <button className="bg-red-600 hover:bg-red-700 px-4 py-2 sm:px-6 sm:py-3 rounded-full cursor-pointer text-sm sm:text-base font-semibold transition-all">
             ▶ Watch Now
-          </button>
-          <button className="bg-gray-700 hover:bg-gray-800 px-4 py-2 sm:px-6 sm:py-3 rounded-full text-sm sm:text-base font-semibold transition-all">
-            ❤️ Add to Favorites
           </button>
         </div>
       </div>
 
-      {/* ⬅ Left Arrow */}
-      <button
+     <button
         onClick={handlePrev}
         className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 text-white bg-black/40 hover:bg-black/70 p-2 sm:p-3 rounded-full transition cursor-pointer"
       >
-        <FaChevronLeft size={18} className="sm:size-20" />
+        <FaChevronLeft className="size-4 sm:size-5" />
       </button>
 
-      {/* ➡ Right Arrow */}
       <button
         onClick={handleNext}
         className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 text-white bg-black/40 hover:bg-black/70 p-2 sm:p-3 rounded-full transition cursor-pointer"
       >
-        <FaChevronRight size={18} className="sm:size-20" />
+        <FaChevronRight className="size-4 sm:size-5" />
       </button>
 
-      {/* ⚪ Dots Indicator */}
       <div className="absolute bottom-3 sm:bottom-6 w-full flex justify-center gap-2 sm:gap-3">
         {movies.map((_, index) => (
           <div
