@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa';
 
@@ -7,6 +7,7 @@ function Header({onAboutClick, getPopularShows}) {
     const [menuOpen, setMenuOpen] = useState(false);
     const [search, setSearch] = useState('');
     const navigate = useNavigate();
+    const menuRef = useRef(null);
 
     const handleSearch = () => {
       if(search.trim()) {
@@ -28,6 +29,24 @@ function Header({onAboutClick, getPopularShows}) {
       ? 'text-red-600 cursor-pointer font-semibold underline underline-offset-6 decoration-2'
       : 'hover:text-red-600 cursor-pointer';
     }
+
+    useEffect(() => {
+      const touchOutside = (e) => {
+        if(menuRef.current && !menuRef.current.contains(e.target)) {
+          setMenuOpen(false);
+        }
+      }
+
+      if(menuOpen) {
+        document.addEventListener('touchstart', touchOutside);
+      } else {
+        document.removeEventListener('touchstart', touchOutside)
+      }
+
+      return () => {
+        document.removeEventListener('touchstart', touchOutside)
+      }
+    }, [menuOpen])
 
 
     // const homeBtn = () => {
@@ -80,7 +99,7 @@ function Header({onAboutClick, getPopularShows}) {
     </ul>
 
     {menuOpen && (
-          <div className='absolute top-16 left-3 bg-[#1e1e1e] text-white rounded-lg shadow-lg w-44 p-2 flex flex-col md:hidden transition-all duration-300 ease-in-out z-50'>
+          <div ref={menuRef} className='absolute top-16 left-3 bg-[#1e1e1e] text-white rounded-lg shadow-lg w-44 p-2 flex flex-col md:hidden transition-all duration-300 ease-in-out z-50'>
             <ul>
               <li><NavLink to="/" className={getNavLinkClass} onClick={() => setMenuOpen(false)}>Home</NavLink></li>
               <li><NavLink to="/movies" className={getNavLinkClass} onClick={() => setMenuOpen(false)}>Movies</NavLink></li>
