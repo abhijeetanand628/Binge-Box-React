@@ -119,13 +119,18 @@ function TermsOfService() {
             <p>
               If you have any questions about these Terms, please contact us at:
               <a
-                href="mailto:[Your Contact Email]"
-                className="text-red-500 hover:underline ml-2"
+                href="mailto:support@bingebox.com"
+                className="text-red-600 hover:underline ml-2"
               >
-                [Your Contact Email]
+                [support@bingebox.com]
               </a>
             </p>
           </section>
+          <div className="text-center mt-10">
+            <a href="/" className="text-red-600 hover:underline">
+              ← Back to Home
+            </a>
+          </div>
         </div>
       </div>
     </div>
