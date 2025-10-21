@@ -72,7 +72,7 @@ function Footer({ onHomeClick, onMoviesClick, onTVSeriesClick, onContactUsClick,
           onClick={onTVSeriesClick}
           >TV Series</NavLink>
           </li>
-          <li><NavLink to="/contactus" 
+          <li><NavLink to="/contactus" className={getNavLinkClass}
           onClick={onContactUsClick}
           >Contact Us</NavLink>
           </li>
