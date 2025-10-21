@@ -8,6 +8,7 @@ function Header({onAboutClick, getPopularShows}) {
     const [search, setSearch] = useState('');
     const navigate = useNavigate();
     const menuRef = useRef(null);
+    const buttonRef = useRef(null);
 
     const handleSearch = () => {
       if(search.trim()) {
@@ -32,7 +33,9 @@ function Header({onAboutClick, getPopularShows}) {
 
     useEffect(() => {
       const touchOutside = (e) => {
-        if(menuRef.current && !menuRef.current.contains(e.target)) {
+        if(menuRef.current && !menuRef.current.contains(e.target) && 
+        buttonRef.current && !buttonRef.current.contains(e.target)
+      ) {
           setMenuOpen(false);
         }
       }
@@ -59,6 +62,7 @@ function Header({onAboutClick, getPopularShows}) {
       <div className='bg-[#121212] w-full p-3 flex items-center justify-between relative'>
         <div className='flex items-center gap-3'>
           <button
+            ref={buttonRef}
             onClick={() => setMenuOpen(!menuOpen)}
             className='text-white text-2xl focus:outline-none cursor-pointer md:hidden'
           >
