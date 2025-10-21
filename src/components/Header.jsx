@@ -29,6 +29,7 @@ function Header({onAboutClick, getPopularShows}) {
       : 'hover:text-red-600 cursor-pointer';
     }
 
+
     // const homeBtn = () => {
     //   getPopularShows('Thor');
     //   window.scrollTo(0, 0);
@@ -81,11 +82,14 @@ function Header({onAboutClick, getPopularShows}) {
     {menuOpen && (
           <div className='absolute top-16 left-3 bg-[#1e1e1e] text-white rounded-lg shadow-lg w-44 p-2 flex flex-col md:hidden transition-all duration-300 ease-in-out z-50'>
             <ul>
-              <li><NavLink to="/" className='block px-4 py-2 hover:bg-gray-700 rounded-md cursor-pointer'>Home</NavLink></li>
-              <li><NavLink to="/movies" className='block px-4 py-2 hover:bg-gray-700 rounded-md cursor-pointer'>Movies</NavLink></li>
-              <li><NavLink to="/series" className='block px-4 py-2 hover:bg-gray-700 rounded-md cursor-pointer'>TV Series</NavLink></li>
-              <li className='px-4 py-2 hover:bg-gray-700 rounded-md cursor-pointer'
-              onClick={onAboutClick}
+              <li><NavLink to="/" className={getNavLinkClass} onClick={() => setMenuOpen(false)}>Home</NavLink></li>
+              <li><NavLink to="/movies" className={getNavLinkClass} onClick={() => setMenuOpen(false)}>Movies</NavLink></li>
+              <li><NavLink to="/series" className={getNavLinkClass} onClick={() => setMenuOpen(false)}>TV Series</NavLink></li>
+              <li className={getNavLinkClass}
+              onClick={() => {
+                setMenuOpen(false)
+                onAboutClick()
+              }}
               >About Us</li>
 
             </ul>
