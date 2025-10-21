@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Movies from './pages/Movies';
 import Series from './pages/Series';
 import ContactUs from './pages/ContactUs';
+import TermsOfService from './pages/TermsOfService';
 
 function App() {
 
@@ -67,6 +68,7 @@ function App() {
         <Route path="/movies" element={<Movies />} />
         <Route path='/series' element={<Series />}/>
         <Route path="/contactus" element={<ContactUs />}/>
+        <Route path="/terms" element={<TermsOfService />}/>
       </Routes>
     </main>
     
@@ -76,6 +78,7 @@ function App() {
       onMoviesClick={scrollToHome}
       onTVSeriesClick={scrollToHome}
       onContactUsClick={scrollToHome}
+      onTermsOfServiceClick={scrollToHome}
       />
     </div>
     </>

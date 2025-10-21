@@ -2,7 +2,7 @@ import spidermanImg from '../assets/spiderman.jpg';
 import { FaCrown, FaBolt, FaPlay, FaClosedCaptioning } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
 
-function Footer({ onHomeClick, onMoviesClick, onTVSeriesClick, onContactUsClick }) {
+function Footer({ onHomeClick, onMoviesClick, onTVSeriesClick, onContactUsClick, onTermsOfServiceClick }) {
 
   const getNavLinkClass = ({ isActive }) => {
       return isActive
@@ -72,10 +72,14 @@ function Footer({ onHomeClick, onMoviesClick, onTVSeriesClick, onContactUsClick 
           onClick={onTVSeriesClick}
           >TV Series</NavLink>
           </li>
-          <li><NavLink to="/contactus" className={getNavLinkClass}
+          <li><NavLink to="/contactus" 
           onClick={onContactUsClick}
-          >Contact Us</NavLink></li>
-          <li className='hover:text-red-600 cursor-pointer'>Terms of Service</li>
+          >Contact Us</NavLink>
+          </li>
+          <li><NavLink to="/terms" className={getNavLinkClass}
+          onClick={onTermsOfServiceClick}
+          >Terms of Service</NavLink>
+          </li>
         </ul>
       </div>
     </div>
