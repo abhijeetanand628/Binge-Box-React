@@ -8,6 +8,7 @@ import Movies from './pages/Movies';
 import Series from './pages/Series';
 import ContactUs from './pages/ContactUs';
 import TermsOfService from './pages/TermsOfService';
+import MovieDetails from './pages/MovieDetails';
 
 function App() {
 
@@ -37,7 +38,7 @@ function App() {
   }
 
   useEffect(() => {
-      getPopularShows('Thor');
+      getPopularShows('Avengers');
       window.scrollTo(0, 0)
   }, [])
 
@@ -69,6 +70,7 @@ function App() {
         <Route path='/series' element={<Series />}/>
         <Route path="/contactus" element={<ContactUs />}/>
         <Route path="/terms" element={<TermsOfService />}/>
+        <Route path="/movie/:imdbID" element={<MovieDetails />}/>
       </Routes>
     </main>
     

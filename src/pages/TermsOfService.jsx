@@ -9,8 +9,8 @@ function TermsOfService() {
   return (
     <div className="bg-black text-gray-300 min-h-screen w-full flex justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="w-full max-w-4xl">
-        <h1 className="text-4xl sm:text-5xl font-bold text-center text-red-600 mb-8">
-          Terms of Service for Binge<span className='text-white'>Box</span>
+        <h1 className="text-4xl sm:text-5xl font-bold text-center text-white mb-8">
+          Terms of Service for BingeBox
         </h1>
 
         <div className="bg-[#121212] p-8 rounded-2xl shadow-lg space-y-6">
@@ -127,7 +127,7 @@ function TermsOfService() {
             </p>
           </section>
           <div className="text-center mt-10">
-            <a href="/" className="text-red-600 hover:underline">
+            <a href="/" className="text-red-600 hover:underline cursor-pointer">
               ← Back to Home
             </a>
           </div>
