@@ -37,22 +37,26 @@ function App() {
       }
   }
 
+  const homeRef = useRef(null);
+  const aboutRef = useRef(null);
+  
+  const scrollToHome = () => {
+    homeRef.current?.scrollIntoView({ behavior: 'smooth' })
+  };
+  
+  const scrollToAbout = () => {
+    aboutRef.current?.scrollIntoView({ behavior: 'smooth' })
+  };
+  
   useEffect(() => {
       getPopularShows('Avengers');
       window.scrollTo(0, 0)
   }, [])
 
-  const homeRef = useRef(null);
-  const aboutRef = useRef(null);
-
-  const scrollToHome = () => {
-    homeRef.current?.scrollIntoView({ behavior: 'smooth' })
-  };
-
-  const scrollToAbout = () => {
-    aboutRef.current?.scrollIntoView({ behavior: 'smooth' })
-  };
-
+  const logoClick = () => {
+    getPopularShows('Avengers');
+    scrollToHome();
+  }
 
   return (
     <>
@@ -60,6 +64,7 @@ function App() {
       <Header 
         onAboutClick={scrollToAbout} 
         getPopularShows={getPopularShows}
+        onLogoClick={logoClick}
       />
     </div>
 

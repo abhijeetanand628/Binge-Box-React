@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa';
 
-function Header({onAboutClick, getPopularShows}) {
+function Header({onAboutClick, getPopularShows, onLogoClick}) {
 
     const [menuOpen, setMenuOpen] = useState(false);
     const [search, setSearch] = useState('');
@@ -51,12 +51,6 @@ function Header({onAboutClick, getPopularShows}) {
       }
     }, [menuOpen])
 
-
-    // const homeBtn = () => {
-    //   getPopularShows('Thor');
-    //   window.scrollTo(0, 0);
-    // }
-
   return (
     <div className='bg-black w-full h-auto flex flex-col'>
       <div className='bg-[#121212] w-full p-3 flex items-center justify-between relative'>
@@ -72,7 +66,7 @@ function Header({onAboutClick, getPopularShows}) {
 
         <Link to="/" 
           className='text-2xl font-semibold text-red-600 cursor-pointer flex items-center'
-          // onClick={homeBtn}
+          onClick={onLogoClick}
         >
           🎬 Binge<span className='text-white font-semibold'>Box</span>
           </Link>
