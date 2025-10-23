@@ -24,7 +24,6 @@ function MovieDetails() {
                 setLoading(false);
             }
         }
-
         fetchMovieDetails();
         window.scrollTo(0, 0)
     }, [imdbID]);
