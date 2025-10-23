@@ -14,6 +14,7 @@ function Header({onAboutClick, getPopularShows, onLogoClick}) {
     const menuRef = useRef(null);
     const buttonRef = useRef(null);
     const searchContainerRef = useRef(null);
+    const searchInputRef = useRef(null);
 
     const apiKey = 'e7d64aa1';
 
@@ -55,6 +56,9 @@ function Header({onAboutClick, getPopularShows, onLogoClick}) {
         getPopularShows(search);
         setShowSuggestions(false);
         setSearch('');
+        if (searchInputRef.current) {
+                searchInputRef.current.blur(); // Remove focus (dismiss keyboard)
+            }
         navigate('/');
       }
     };
@@ -62,6 +66,9 @@ function Header({onAboutClick, getPopularShows, onLogoClick}) {
     const enter = (e) => {
       if(e.key === 'Enter')
       {
+        if (searchInputRef.current) {
+                searchInputRef.current.blur(); // Also remove focus on Enter
+            }
         handleSearch()
       }
     }
@@ -69,7 +76,10 @@ function Header({onAboutClick, getPopularShows, onLogoClick}) {
     const handleSuggestionClick = (suggestionTitle) => {
         setShowSuggestions(false); 
         getPopularShows(suggestionTitle); 
-        setSearch('')
+        setSearch('');
+        if (searchInputRef.current) {
+            searchInputRef.current.blur(); // Also remove focus when suggestion clicked
+        }
         navigate('/'); 
     };
 
@@ -126,6 +136,7 @@ function Header({onAboutClick, getPopularShows, onLogoClick}) {
 
       <div ref={searchContainerRef} className='relative flex items-center gap-3'>
           <input
+            ref={searchInputRef}
             type='text'
             placeholder='Search...'
             value={search}
