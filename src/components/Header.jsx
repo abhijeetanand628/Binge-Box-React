@@ -67,9 +67,9 @@ function Header({onAboutClick, getPopularShows, onLogoClick}) {
     }
 
     const handleSuggestionClick = (suggestionTitle) => {
-        setSearch(suggestionTitle); 
         setShowSuggestions(false); 
         getPopularShows(suggestionTitle); 
+        setSearch('')
         navigate('/'); 
     };
 
@@ -93,14 +93,12 @@ function Header({onAboutClick, getPopularShows, onLogoClick}) {
           }
       }
 
-      if(menuOpen) {
-        document.addEventListener('touchstart', touchOutside);
-      } else {
-        document.removeEventListener('touchstart', touchOutside)
-      }
+      document.addEventListener('mousedown', touchOutside);
+      document.addEventListener('touchstart', touchOutside);
 
       return () => {
-        document.removeEventListener('touchstart', touchOutside)
+        document.removeEventListener('mousedown', touchOutside);
+        document.removeEventListener('touchstart', touchOutside);
       }
     }, [menuOpen, showSuggestions])
 
@@ -155,7 +153,7 @@ function Header({onAboutClick, getPopularShows, onLogoClick}) {
           </div>
         )}
       </div>
-      
+
     <ul className='hidden md:flex gap-6 text-white font-medium'>
           <li><NavLink to="/" className={getNavLinkClass}>Home</NavLink></li>
           <li><NavLink to="/movies" className={getNavLinkClass}>Movies</NavLink></li>
