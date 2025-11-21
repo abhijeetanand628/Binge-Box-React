@@ -9,6 +9,8 @@ import Series from './pages/Series';
 import ContactUs from './pages/ContactUs';
 import TermsOfService from './pages/TermsOfService';
 import MovieDetails from './pages/MovieDetails';
+import ProtectedRoute from './components/ProtectedRoute';
+import Pay from './pages/Pay';
 
 function App() {
 
@@ -73,7 +75,15 @@ function App() {
         <Route path="/" element={<Home results={results} loading={loading} />} />
         <Route path="/movies" element={<Movies />} />
         <Route path='/series' element={<Series />}/>
-        <Route path="/contactus" element={<ContactUs />}/>
+        <Route 
+          path="/contactus" 
+          element={
+          <ProtectedRoute>
+            <ContactUs />
+          </ProtectedRoute>
+          }
+        />
+        <Route path='/pay' element={<Pay />} />
         <Route path="/terms" element={<TermsOfService />}/>
         <Route path="/movie/:imdbID" element={<MovieDetails />}/>
       </Routes>
