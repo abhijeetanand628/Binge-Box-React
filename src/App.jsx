@@ -11,12 +11,16 @@ import TermsOfService from './pages/TermsOfService';
 import MovieDetails from './pages/MovieDetails';
 import ProtectedRoute from './components/ProtectedRoute';
 import Pay from './pages/Pay';
+import { useLocation } from "react-router-dom";
+
 
 function App() {
 
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(true);
   
+  const location = useLocation();
+
   const apiKey = 'e7d64aa1';
 
   const getPopularShows = async(search) => {
@@ -49,10 +53,15 @@ function App() {
   const scrollToAbout = () => {
     aboutRef.current?.scrollIntoView({ behavior: 'smooth' })
   };
+
+  const hideLayout = location.pathname === "/pay";
   
   useEffect(() => {
       getPopularShows('Avengers');
       window.scrollTo(0, 0)
+
+      // reset payment on server restart
+      localStorage.removeItem("contact_paid");
   }, [])
 
   const logoClick = () => {
@@ -62,13 +71,15 @@ function App() {
 
   return (
     <>
-    <div ref={homeRef}>
-      <Header 
-        onAboutClick={scrollToAbout} 
-        getPopularShows={getPopularShows}
-        onLogoClick={logoClick}
-      />
-    </div>
+    {!hideLayout && (
+      <div ref={homeRef}>
+        <Header 
+          onAboutClick={scrollToAbout} 
+          getPopularShows={getPopularShows}
+          onLogoClick={logoClick}
+        />
+      </div>
+    )}
 
     <main>
       <Routes>
@@ -89,15 +100,17 @@ function App() {
       </Routes>
     </main>
     
-    <div ref={aboutRef}>
-      <Footer 
-      onHomeClick={scrollToHome} 
-      onMoviesClick={scrollToHome}
-      onTVSeriesClick={scrollToHome}
-      onContactUsClick={scrollToHome}
-      onTermsOfServiceClick={scrollToHome}
-      />
-    </div>
+    {!hideLayout && (
+      <div ref={aboutRef}>
+        <Footer 
+          onHomeClick={scrollToHome} 
+          onMoviesClick={scrollToHome}
+          onTVSeriesClick={scrollToHome}
+          onContactUsClick={scrollToHome}
+          onTermsOfServiceClick={scrollToHome}
+        />
+      </div>
+    )}
     </>
   )
 }
