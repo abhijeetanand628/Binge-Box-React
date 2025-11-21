@@ -1,16 +1,143 @@
-# React + Vite
+# 🎬 BingeBox - Movie App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive movie discovery application built with React and Vite. Browse movies, search for your favorites, and explore detailed information about films and TV series using the OMDb API.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **🔍 Search Functionality**: Real-time movie search with autocomplete suggestions
+- **🎥 Movie Discovery**: Browse popular movies and TV series
+- **📱 Responsive Design**: Fully responsive layout that works on all devices
+- **🎬 Movie Details**: Detailed information pages for each movie including:
+  - Ratings, runtime, and release date
+  - Cast and crew information
+  - Plot summaries
+  - Genre tags
+  - Awards and box office data
+- **🎞️ Movie Slider**: Interactive carousel showcasing featured movies
+- **🧭 Navigation**: Smooth navigation with React Router
+- **🌙 Dark Theme**: Modern dark-themed UI for comfortable viewing
 
-## React Compiler
+## 🚀 Getting Started
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Prerequisites
 
-## Expanding the ESLint configuration
+- Node.js (v14 or higher)
+- npm or yarn package manager
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Installation
+
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd Movie-App
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start the development server:
+```bash
+npm run dev
+```
+
+The app will be available at `http://localhost:5173` (or the port shown in your terminal).
+
+## 📦 Available Scripts
+
+- `npm run dev` - Start the development server with hot module replacement
+- `npm run build` - Build the app for production
+- `npm run preview` - Preview the production build locally
+- `npm run lint` - Run ESLint to check code quality
+
+## 🛠️ Tech Stack
+
+- **React 19.1.1** - UI library
+- **Vite 7.1.7** - Build tool and dev server
+- **React Router DOM 7.9.4** - Client-side routing
+- **Tailwind CSS 4.1.14** - Utility-first CSS framework
+- **React Icons 5.5.0** - Icon library
+- **React Swipeable 7.0.2** - Swipe gestures for mobile
+- **OMDb API** - Movie database API
+
+## 📁 Project Structure
+
+```
+Movie-App/
+├── public/           # Static assets
+├── src/
+│   ├── assets/       # Images and other assets
+│   ├── components/   # Reusable React components
+│   │   ├── Footer.jsx
+│   │   ├── Header.jsx
+│   │   ├── MovieSlider.jsx
+│   │   └── Poster.jsx
+│   ├── pages/        # Page components
+│   │   ├── ContactUs.jsx
+│   │   ├── Home.jsx
+│   │   ├── MovieDetails.jsx
+│   │   ├── Movies.jsx
+│   │   ├── Series.jsx
+│   │   └── TermsOfService.jsx
+│   ├── App.jsx       # Main app component
+│   ├── App.css       # App styles
+│   ├── index.css     # Global styles
+│   └── main.jsx      # Entry point
+├── index.html
+├── package.json
+├── vite.config.js
+└── README.md
+```
+
+## 🎯 Key Features Explained
+
+### Search with Autocomplete
+The header includes a search bar with debounced autocomplete suggestions that appear as you type, making it easy to find movies quickly.
+
+### Movie Slider
+The home page features an interactive movie slider showcasing the top 6 results from your search or default movies.
+
+### Movie Details Page
+Click on any movie poster to view comprehensive details including ratings, cast, plot, and more.
+
+### Responsive Navigation
+- Desktop: Full navigation menu in the header
+- Mobile: Hamburger menu for easy access on smaller screens
+
+## 🔑 API Configuration
+
+This app uses the OMDb API. The API key is currently hardcoded in the components. For production use, consider:
+
+1. Moving the API key to environment variables
+2. Creating a `.env` file:
+```env
+VITE_OMDB_API_KEY=your_api_key_here
+```
+3. Accessing it via `import.meta.env.VITE_OMDB_API_KEY`
+
+**Note**: Get your free API key from [OMDb API](http://www.omdbapi.com/apikey.aspx)
+
+## 🎨 Styling
+
+The project uses Tailwind CSS for styling, providing:
+- Utility-first CSS approach
+- Responsive design utilities
+- Dark theme support
+- Custom color schemes
+
+## 📝 License
+
+This project is open source and available under the MIT License.
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome! Feel free to check the issues page.
+
+## 👤 Author
+
+Built with ❤️ using React and Vite
+
+---
+
+**Happy Movie Browsing! 🍿**
