@@ -4,18 +4,29 @@ A modern, responsive movie discovery application built with React and Vite. Brow
 
 ## ✨ Features
 
-- **🔍 Search Functionality**: Real-time movie search with autocomplete suggestions
-- **🎥 Movie Discovery**: Browse popular movies and TV series
-- **📱 Responsive Design**: Fully responsive layout that works on all devices
-- **🎬 Movie Details**: Detailed information pages for each movie including:
-  - Ratings, runtime, and release date
+- **🔍 Search Functionality**: Real-time movie search with debounced autocomplete suggestions
+- **🎥 Movie Discovery**: Browse movies and TV series with dedicated pages
+  - **Movies Page**: Displays action movies by default
+  - **Series Page**: Displays comedy TV series by default
+- **📱 Responsive Design**: Fully responsive layout optimized for all devices (mobile, tablet, desktop)
+- **🎬 Movie Details**: Comprehensive information pages for each movie/TV show including:
+  - IMDb ratings, runtime, and release date
   - Cast and crew information
   - Plot summaries
   - Genre tags
   - Awards and box office data
-- **🎞️ Movie Slider**: Interactive carousel showcasing featured movies
-- **🧭 Navigation**: Smooth navigation with React Router
-- **🌙 Dark Theme**: Modern dark-themed UI for comfortable viewing
+  - Language and country information
+- **🎞️ Movie Slider**: Interactive carousel with:
+  - Auto-play functionality (5-second intervals)
+  - Swipe gestures for mobile devices
+  - Navigation arrows for manual control
+  - Dot indicators for current position
+  - High-resolution poster backgrounds
+- **📋 Contact Form**: Contact Us page with form for user inquiries
+- **📜 Terms of Service**: Comprehensive terms and conditions page
+- **🧭 Navigation**: Smooth navigation with React Router and scroll-to-section functionality
+- **🌙 Dark Theme**: Modern dark-themed UI with red accent colors for comfortable viewing
+- **🎯 Interactive Posters**: Movie posters with hover effects, HD badges, and type indicators
 
 ## 🚀 Getting Started
 
@@ -61,6 +72,17 @@ The app will be available at `http://localhost:5173` (or the port shown in your 
 - **React Swipeable 7.0.2** - Swipe gestures for mobile
 - **OMDb API** - Movie database API
 
+## 🗺️ Routes
+
+The application includes the following routes:
+
+- `/` - Home page with movie slider and search results grid
+- `/movies` - Movies page displaying action movies
+- `/series` - TV Series page displaying comedy series
+- `/contactus` - Contact Us page with contact form
+- `/terms` - Terms of Service page
+- `/movie/:imdbID` - Dynamic route for individual movie/TV show details
+
 ## 📁 Project Structure
 
 ```
@@ -93,17 +115,58 @@ Movie-App/
 ## 🎯 Key Features Explained
 
 ### Search with Autocomplete
-The header includes a search bar with debounced autocomplete suggestions that appear as you type, making it easy to find movies quickly.
+The header includes a search bar with debounced autocomplete suggestions (300ms delay) that appear as you type. Suggestions are clickable and automatically navigate to the home page with search results. The search supports Enter key submission and click-to-search functionality.
 
 ### Movie Slider
-The home page features an interactive movie slider showcasing the top 6 results from your search or default movies.
+The home page features an interactive movie slider showcasing the top 6 results from your search or default "Avengers" movies. Features include:
+- Auto-advance every 5 seconds
+- Swipe gestures for mobile (left/right)
+- Navigation arrows for manual control
+- Dot indicators showing current slide
+- High-resolution poster backgrounds with gradient overlays
+- Smooth transitions between slides
+
+### Movies & Series Pages
+- **Movies Page**: Displays action movies fetched from OMDb API, filtered by type "movie"
+- **Series Page**: Displays comedy TV series fetched from OMDb API, filtered by type "series"
+- Both pages feature responsive grid layouts that adapt to screen size
 
 ### Movie Details Page
-Click on any movie poster to view comprehensive details including ratings, cast, plot, and more.
+Click on any movie poster to view comprehensive details including:
+- Large poster image with fallback placeholder
+- Title, rating, runtime, and release year
+- Genre tags displayed as badges
+- Full plot description
+- Cast, director, and production details
+- Awards and box office information
+- Back to home navigation button
+
+### Contact Us Page
+A fully styled contact form with fields for:
+- Full name
+- Email address
+- Message (textarea)
+- Form validation and styling
+
+### Terms of Service Page
+Comprehensive terms of service document covering:
+- Service description
+- User conduct guidelines
+- Third-party links disclaimer
+- Warranty and liability information
+
+### Footer (About Us)
+The footer section includes:
+- About Us description with background image
+- Feature highlights (High quality, Free forever, Fast load, Multi subtitles)
+- Navigation links to all main pages
+- Responsive design with overlay effects
 
 ### Responsive Navigation
-- Desktop: Full navigation menu in the header
-- Mobile: Hamburger menu for easy access on smaller screens
+- **Desktop**: Full navigation menu in the header with active state indicators
+- **Mobile**: Hamburger menu (☰) for easy access on smaller screens
+- Smooth scroll-to-section functionality for footer navigation
+- Active link highlighting with red accent color
 
 ## 🔑 API Configuration
 
@@ -120,11 +183,14 @@ VITE_OMDB_API_KEY=your_api_key_here
 
 ## 🎨 Styling
 
-The project uses Tailwind CSS for styling, providing:
+The project uses Tailwind CSS 4.1.14 for styling, providing:
 - Utility-first CSS approach
-- Responsive design utilities
-- Dark theme support
-- Custom color schemes
+- Responsive design utilities (sm, md, lg breakpoints)
+- Dark theme with black (#000000) and dark gray (#121212, #1e1e1e) backgrounds
+- Red accent color (#red-600) for interactive elements
+- Smooth transitions and hover effects
+- Gradient overlays for visual depth
+- Custom spacing and typography scales
 
 ## 📝 License
 
